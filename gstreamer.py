@@ -2,8 +2,6 @@ import sys
 import subprocess
 import gi
 
-gi.require_version('GLib', '2.0')
-gi.require_version('GObject', '2.0')
 gi.require_version('Gst', '1.0')
 
 from gi.repository import Gst
@@ -18,7 +16,7 @@ def start_stream():
     ip = find_remote_ip()
     # ip = '127.0.0.1'
     if ip == '':
-        print("no remote ip")
+        print('no remote ip')
         sys.exit(-1)
     port = 4000
 
@@ -31,8 +29,8 @@ def start_stream():
 
     # build the pipeline
     pipeline = Gst.parse_launch(
-        f"v4l2src device=/dev/video0 ! video/x-raw,format=YUY2,width={width},height={height},"
-        f"framerate={fps}/1 ! jpegenc ! rtpjpegpay ! udpsink host={ip} port={port}"
+        f'v4l2src device=/dev/video0 ! video/x-raw,format=YUY2,width={width},height={height},'
+        f'framerate={fps}/1 ! jpegenc ! rtpjpegpay ! udpsink host={ip} port={port}'
     )
 
     # start playing
