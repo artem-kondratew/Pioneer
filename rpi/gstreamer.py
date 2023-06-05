@@ -1,3 +1,4 @@
+import os
 import sys
 import subprocess
 import gi
@@ -45,4 +46,6 @@ def start_stream():
 
 
 if __name__ == "__main__":
+    os.system("clear")
+    # os.system('./gs_router &')
     start_stream()
