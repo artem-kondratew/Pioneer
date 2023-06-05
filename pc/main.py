@@ -1,6 +1,6 @@
-import flight
-import aruco
 import multiprocessing as mp
+import aruco
+import flight
 
 
 def main():

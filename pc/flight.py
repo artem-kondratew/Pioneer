@@ -9,8 +9,7 @@ ip = '192.168.43.232'
 gs_router_port = 5656
 
 pioneer = Pioneer(name='pioneer', ip=ip, mavlink_port=gs_router_port, connection_method='udpout',
-           x_des = np.array([[0.0],
-                  [0.0]])       device='/dev/serial0', baud=230400, logger=True, log_connection=True)
+                  device='/dev/serial0', baud=230400, logger=True, log_connection=True)
 
 x_des = np.array([[0.0],
                   [0.0]])
