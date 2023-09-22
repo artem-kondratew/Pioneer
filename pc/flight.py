@@ -5,10 +5,10 @@ from pioneer_sdk import Pioneer
 
 point = np.array([[float], [float]])
 
-ip = '192.168.43.232'
+rpi_ip = '192.168.43.148'
 gs_router_port = 5656
 
-pioneer = Pioneer(name='pioneer', ip=ip, mavlink_port=gs_router_port, connection_method='udpout',
+pioneer = Pioneer(name='pioneer', ip=rpi_ip, mavlink_port=gs_router_port, connection_method='udpout',
                   device='/dev/serial0', baud=230400, logger=True, log_connection=True)
 
 x_des = np.array([[0.0],
@@ -51,7 +51,8 @@ def correct_takeoff(q: mp.Queue) -> bool:
 
     while True:
         if time.time() - start_time > TAKEOFF_CORRECT_TIME:
-            return False
+            pass
+            #return False
 
         if q.empty():
             continue
@@ -62,12 +63,23 @@ def correct_takeoff(q: mp.Queue) -> bool:
         move(u[0], u[1])
 
         if is_point_reached(x_des, x):
-            return True
+            pass
+            #return True
+
+
+def user():
+    time.sleep(10)
+    move(2, 0)
 
 
 def flight(q: mp.Queue):
     start()
-    if correct_takeoff(q):
-        move(2, 2)
-    if pioneer.point_reached():
-        pioneer.land()
+    user()
+    # print(correct_takeoff(q))
+    #if correct_takeoff(q):
+    #    move(2, 2)
+    #if pioneer.point_reached():
+    #    pioneer.land()
+
+
+flight(mp.Queue(1))

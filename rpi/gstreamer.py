@@ -15,8 +15,8 @@ def find_remote_ip() -> str:
 
 
 def start_stream():
-    ip = find_remote_ip()
-    # ip = '127.0.0.1'
+    # ip = find_remote_ip()
+    ip = '127.0.0.1'
     if ip == '':
         print('no remote ip')
         sys.exit(-1)
